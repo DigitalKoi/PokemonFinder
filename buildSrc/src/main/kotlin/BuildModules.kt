@@ -12,6 +12,6 @@ object BuildModules {
     }
 
     object Libraries {
-
+        const val TEST_UTILS = ":libraries:test_utils"
     }
 }
