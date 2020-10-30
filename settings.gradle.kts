@@ -1,5 +1,6 @@
 include(
     ":app",
+    ":core",
     ":libraries:test_utils"
 )
 
