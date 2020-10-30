@@ -17,6 +17,10 @@ plugins {
     id(BuildPlugins.JACOCO)
 }
 
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation("com.digitalkoi.core.annotations.OpenClass")
+}
 
 android {
     compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
@@ -106,6 +110,7 @@ junitJacoco {
 }
 
 dependencies {
+    implementation(project(BuildModules.CORE))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
