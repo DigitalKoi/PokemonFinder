@@ -45,12 +45,12 @@ class NetworkModuleTest {
     }
 
     @Test
-    fun verifyProvidedMarvelService() {
+    fun verifyProvidedPokemonService() {
         val retrofit = mockk<Retrofit>()
-        val marvelService = mockk<PokemonService>()
+        val pokemonService = mockk<PokemonService>()
         val serviceClassCaptor = slot<Class<*>>()
 
-        every { retrofit.create<PokemonService>(any()) } returns marvelService
+        every { retrofit.create<PokemonService>(any()) } returns pokemonService
 
         networkModule.providePokemonService(retrofit)
 
@@ -60,7 +60,7 @@ class NetworkModuleTest {
 
 
     @Test
-    fun verifyProvidedMarvelRepository() {
+    fun verifyProvidedPokemonRepository() {
         val pokemonService = mockk<PokemonService>()
         val pokemonRepository = networkModule.providePokemonRepository(pokemonService)
 
