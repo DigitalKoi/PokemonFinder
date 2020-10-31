@@ -10,6 +10,7 @@ object BuildModules {
 
     object Commons {
         const val UI = ":commons:ui"
+        const val VIEW = ":commons:view"
     }
 
     object Libraries {
