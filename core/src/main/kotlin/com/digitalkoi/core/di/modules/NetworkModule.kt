@@ -2,6 +2,8 @@ package com.digitalkoi.core.di.modules
 
 import com.digitalkoi.core.BuildConfig
 import com.digitalkoi.core.di.CoreComponent
+import com.digitalkoi.core.network.repositories.PokemonRepository
+import com.digitalkoi.core.network.services.PokemonService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -61,4 +63,23 @@ class NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    /**
+     * Create a provider method binding for [].
+     *
+     * @return Instance of pokemon service.
+     * @see Provides
+     */
+    @Singleton
+    @Provides
+    fun providePokemonService(retrofit: Retrofit) = retrofit.create(PokemonService::class.java)
+
+    /**
+     * Create a provider method binding for [PokemonRepository].
+     *
+     * @return Instance of pokemon repository.
+     * @see Provides
+     */
+    @Singleton
+    @Provides
+    fun providePokemonRepository(service: PokemonService) = PokemonRepository(service)
 }
