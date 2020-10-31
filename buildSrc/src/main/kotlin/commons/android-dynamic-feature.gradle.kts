@@ -1,15 +1,15 @@
 package commons
 
 import BuildAndroidConfig
+import BuildModules
 import BuildProductDimensions
 import ProductFlavorDevelop
 import ProductFlavorProduction
 import ProductFlavorQA
-import dependencies.Dependencies
 import dependencies.AnnotationProcessorsDependencies
+import dependencies.Dependencies
 import extensions.addTestsDependencies
 import extensions.implementation
-import extensions.testImplementation
 import extensions.kapt
 
 plugins {
@@ -92,6 +92,8 @@ junitJacoco {
 
 dependencies {
     implementation(project(BuildModules.APP))
+    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Commons.UI))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
