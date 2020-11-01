@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import com.vmadalin.commons.ui.extensions.getString
-import com.vmadalin.commons.views.databinding.ViewProgressDialogBinding
+import com.digitalkoi.commons.ui.extensions.getString
+import com.digitalkoi.commons.views.databinding.ViewProgressDialogBinding
 
 /**
  * Custom progress dialog to display as alert during on long process user waiting.

@@ -2,7 +2,7 @@ include(
     ":app",
     ":core",
     ":commons:ui",
-    ":commons:view",
+    ":commons:views",
     ":libraries:test_utils"
 )
 
