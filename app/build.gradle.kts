@@ -1,9 +1,9 @@
-import dependencies.Dependencies
-import dependencies.DebugDependencies
 import dependencies.AnnotationProcessorsDependencies
+import dependencies.DebugDependencies
+import dependencies.Dependencies
 import extensions.addTestsDependencies
-import extensions.implementation
 import extensions.debugImplementation
+import extensions.implementation
 import extensions.kapt
 
 plugins {
@@ -61,7 +61,7 @@ android {
     }
 
     dynamicFeatures = mutableSetOf(
-        // TODO: 30.10.2020 add modules here
+        BuildModules.Features.HOME
     )
 
     buildFeatures {
