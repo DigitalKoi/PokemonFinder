@@ -61,6 +61,7 @@ android {
     }
 
     dynamicFeatures = mutableSetOf(
+        BuildModules.Features.HOME
         BuildModules.Features.POKEMON_LIST
     )
 
