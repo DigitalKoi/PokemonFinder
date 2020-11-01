@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- region Pokemon list -->
+    <dimen name="pokemon_list_item_size">100dp</dimen>
+    <dimen name="pokemon_list_item_text_padding">5dp</dimen>
+    <!-- endregion -->
+
+    <!-- region Pokemon detail -->
+    <dimen name="pokemon_detail_app_bar_height">200dp</dimen>
+    <!-- endregion -->
+</resources>

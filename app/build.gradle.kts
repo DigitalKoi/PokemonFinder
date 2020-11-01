@@ -61,7 +61,7 @@ android {
     }
 
     dynamicFeatures = mutableSetOf(
-        // TODO: 30.10.2020 add modules here
+        BuildModules.Features.POKEMON_LIST
     )
 
     buildFeatures {

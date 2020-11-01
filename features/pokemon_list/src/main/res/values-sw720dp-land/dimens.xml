@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- region Pokemon detail -->
+    <dimen name="pokemon_detail_app_bar_height">400dp</dimen>
+    <!-- endregion -->
+
+</resources>

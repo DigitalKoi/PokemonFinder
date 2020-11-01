@@ -20,10 +20,10 @@ class PokemonRepository(
      * @param page A page count for offset
      * @return Response for pokemon's resource.
      */
-    suspend fun getPokemons(page: Int): PokemonsResponse =
+    suspend fun getPokemons(offset: Int, limit: Int): PokemonsResponse =
         service.getPokemons(
-            limit = POKEMON_LIMIT_ITEMS_COUNT,
-            offset = calculateOffset(page)
+            limit = limit,
+            offset = offset
         )
 
     /**

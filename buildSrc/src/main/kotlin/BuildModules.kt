@@ -6,11 +6,12 @@ object BuildModules {
     const val CORE = ":core"
 
     object Features {
+        const val POKEMON_LIST = ":features:pokemon_list"
     }
 
     object Commons {
         const val UI = ":commons:ui"
-        const val VIEW = ":commons:views"
+        const val VIEWS = ":commons:views"
     }
 
     object Libraries {
