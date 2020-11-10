@@ -13,5 +13,15 @@
     <string name="pokemon_detail_added_to_favorite_message">Added to your favorite list</string>
     <string name="pokemon_detail_image_content_description">Image of the selected pokemon</string>
     <string name="pokemon_detail_floating_button_content_description">Add pokemon to favorite</string>
+
+    <string name="pokemon_detail_parameters">Pokemon parameters</string>
+
+    <string name="pokemon_detail_height">Height: %1$d</string>
+    <string name="pokemon_detail_weight">Weight: %1$d</string>
+    <string name="pokemon_detail_hp">Health point: %1$d</string>
+    <string name="pokemon_detail_attack">Attack: %1$d</string>
+    <string name="pokemon_detail_defense">Defense point: %1$d</string>
+    <string name="pokemon_detail_type">Type point: %1$s</string>
+
     <!-- endregion -->
 </resources>

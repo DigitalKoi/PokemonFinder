@@ -3,6 +3,7 @@ package com.digitalkoi.dynamicfeatures.pokemonlist.ui.detail.di
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import com.digitalkoi.commons.ui.extensions.viewModel
+import com.digitalkoi.commons.views.ProgressBarDialog
 import com.digitalkoi.core.di.scopes.FeatureScope
 import com.digitalkoi.core.network.repositories.PokemonRepository
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.detail.PokemonDetailFragment

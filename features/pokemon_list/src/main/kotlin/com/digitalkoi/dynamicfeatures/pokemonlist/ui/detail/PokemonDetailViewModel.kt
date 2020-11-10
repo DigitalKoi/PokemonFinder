@@ -9,8 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.digitalkoi.core.network.repositories.PokemonRepository
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.detail.model.PokemonDetail
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.detail.model.PokemonDetailMapper
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * View model responsible for preparing and managing the data for [PokemonDetailFragment].
@@ -43,8 +43,9 @@ class PokemonDetailViewModel @Inject constructor(
         _state.postValue(PokemonDetailViewState.Loading)
         viewModelScope.launch {
             try {
-                val result = pokemonRepository.getPokemon(characterId)
+                val result = pokemonRepository.getPokemon(pokemonId)
                 _data.postValue(pokemonDetailMapper.map(result))
+                _state.postValue(PokemonDetailViewState.AddToFavorite)
             } catch (e: Exception) {
                 _state.postValue(PokemonDetailViewState.Error)
             }

@@ -1,8 +1,8 @@
 include(
     ":app",
-    ":features:pokemon_list",
     ":core",
     ":features:home",
+    ":features:pokemon_list",
     ":commons:ui",
     ":commons:views",
     ":libraries:test_utils"

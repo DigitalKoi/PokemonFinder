@@ -21,9 +21,24 @@ class PokemonDetailMapper : Mapper<PokemonsResponse.PokemonResponse, PokemonDeta
      */
     @Throws(NoSuchElementException::class)
     override suspend fun map(from: PokemonsResponse.PokemonResponse): PokemonDetail = PokemonDetail(
-        id = 0,
+        id = from.id,
         name = from.name,
-        description = "",
-        imageUrl = from.url
+        height = from.height,
+        weight = from.weight,
+        stats = PokemonDetail.Stat(
+            hp = from.stats[5].stat,
+            attack = from.stats[4].stat,
+            defense = from.stats[3].stat
+        ),
+        types = from.types.map { typeResponse ->
+            PokemonDetail.Type(
+                slot = typeResponse.slot,
+                type = PokemonDetail.Type.TypeDetails(
+                    name = typeResponse.type.name,
+                    url = typeResponse.type.url
+                )
+            )
+        },
+        imageUrl = from.getImageUrl()
     )
 }

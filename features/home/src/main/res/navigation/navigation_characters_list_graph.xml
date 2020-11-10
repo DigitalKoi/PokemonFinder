@@ -8,10 +8,10 @@
     <fragment
         android:id="@+id/pokemon_list_fragment"
         android:name="com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.PokemonListFragment"
-        android:label="Characters">
+        android:label="Pokemons">
         <action
-            android:id="@+id/action_charactersListFragment_to_character_detail_fragment"
-            app:destination="@+id/character_detail_fragment"
+            android:id="@+id/action_pokemonsListFragment_to_pokemonDetailFragment"
+            app:destination="@+id/pokemon_detail_fragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -19,10 +19,10 @@
             app:popUpTo="@+id/pokemon_list_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/character_detail_fragment"
+        android:id="@+id/pokemon_detail_fragment"
         android:name="com.digitalkoi.dynamicfeatures.pokemonlist.ui.detail.PokemonDetailFragment">
         <argument
-            android:name="character_id"
+            android:name="pokemon_id"
             app:argType="long" />
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@
 
     <dist:module
         dist:instant="true"
-        dist:title="@string/feature_pokemon_list">
+        dist:title="@string/feature_pokemons_list">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>

@@ -3,17 +3,21 @@ package com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.paging
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.PageKeyedDataSource
 import com.digitalkoi.core.annotations.OpenForTesting
+import com.digitalkoi.core.extensions.asyncAll
 import com.digitalkoi.core.network.NetworkState
 import com.digitalkoi.core.network.repositories.PokemonRepository
+import com.digitalkoi.core.network.responses.PokemonsResponse
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.model.PokemonItem
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.model.PokemonItemMapper
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-const val PAGE_INIT_ELEMENTS = 0
+const val PAGE_INIT_ELEMENTS = 1
 const val PAGE_MAX_ELEMENTS = 30
 
 /**
@@ -33,6 +37,7 @@ class PokemonPageDataSource @Inject constructor(
 ) : PageKeyedDataSource<Int, PokemonItem>() {
 
     val networkState = MutableLiveData<NetworkState>()
+
     @VisibleForTesting(otherwise = PRIVATE)
     var retry: (() -> Unit)? = null
 
@@ -56,11 +61,17 @@ class PokemonPageDataSource @Inject constructor(
                 networkState.postValue(NetworkState.Error())
             }
         ) {
-            val response = repository.getPokemons(
-                offset = PAGE_INIT_ELEMENTS,
-                limit = PAGE_MAX_ELEMENTS
-            )
+
+            val response = mutableListOf<PokemonsResponse.PokemonResponse>()
+
+            asyncAll((PAGE_INIT_ELEMENTS..PAGE_MAX_ELEMENTS.toLong()).toList()) { id ->
+                repository.getPokemon(id)
+            }.awaitAll().forEach {
+                response.add(it)
+            }
+
             val data = mapper.map(response)
+
             callback.onResult(data, null, PAGE_MAX_ELEMENTS)
             networkState.postValue(NetworkState.Success(isEmptyResponse = data.isEmpty()))
         }
@@ -87,11 +98,17 @@ class PokemonPageDataSource @Inject constructor(
                 networkState.postValue(NetworkState.Error(true))
             }
         ) {
-            val response = repository.getPokemons(
-                offset = params.key,
-                limit = PAGE_MAX_ELEMENTS
-            )
+
+            val response = mutableListOf<PokemonsResponse.PokemonResponse>()
+
+            asyncAll((params.key.toLong() until params.key + PAGE_MAX_ELEMENTS).toList()) {
+                repository.getPokemon(it)
+            }.awaitAll().forEach {
+                response.add(it)
+            }
+
             val data = mapper.map(response)
+
             callback.onResult(data, params.key + PAGE_MAX_ELEMENTS)
             networkState.postValue(NetworkState.Success(true, data.isEmpty()))
         }

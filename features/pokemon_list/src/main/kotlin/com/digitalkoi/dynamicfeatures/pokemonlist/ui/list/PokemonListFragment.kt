@@ -1,37 +1,18 @@
-/*
- * Copyright 2019 vmadalin.com
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.digitalkoi.dynamicfeatures.pokemonlist.ui.list
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
-import com.digitalkoi.android.SampleApp.Companion.coreComponent
 import com.digitalkoi.commons.ui.base.BaseFragment
 import com.digitalkoi.commons.ui.extensions.gridLayoutManager
 import com.digitalkoi.commons.ui.extensions.observe
-import com.digitalkoi.dynamicfeatures.characterslist.R
-import com.digitalkoi.dynamicfeatures.characterslist.databinding.FragmentPokemonListBinding
 import com.digitalkoi.dynamicfeatures.pokemonlist.R
-import com.digitalkoi.dynamicfeatures.pokemonlist.databinding.FragmentCharactersListBinding
+import com.digitalkoi.dynamicfeatures.pokemonlist.databinding.FragmentPokemonListBinding
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.adapter.PokemonListAdapter
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.adapter.PokemonListAdapterState
+import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.di.DaggerPokemonListComponent
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.di.PokemonListModule
-import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.di.DaggerCharactersListComponent
 import com.digitalkoi.dynamicfeatures.pokemonlist.ui.list.model.PokemonItem
 import com.digitalkoi.pokemonfinder.PokemonApp.Companion.coreComponent
 import javax.inject.Inject
@@ -68,10 +49,10 @@ class PokemonListFragment :
      * Initialize dagger injection dependency graph.
      */
     override fun onInitDependencyInjection() {
-        DaggerCharactersListComponent
+        DaggerPokemonListComponent
             .builder()
             .coreComponent(coreComponent(requireContext()))
-            .charactersListModule(PokemonListModule(this))
+            .pokemonListModule(PokemonListModule(this))
             .build()
             .inject(this)
     }
@@ -81,7 +62,7 @@ class PokemonListFragment :
      */
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
-        viewBinding.includeList.charactersList.apply {
+        viewBinding.includeList.pokemonList.apply {
             adapter = viewAdapter
             gridLayoutManager?.spanSizeLookup = viewAdapter.getSpanSizeLookup()
         }
@@ -126,7 +107,7 @@ class PokemonListFragment :
             is PokemonListViewEvent.OpenCharacterDetail ->
                 findNavController().navigate(
                     PokemonListFragmentDirections
-                        .actionPokemonListFragmentToCharacterDetailFragment(viewEvent.id)
+                        .actionPokemonsListFragmentToPokemonDetailFragment(viewEvent.id)
                 )
         }
     }

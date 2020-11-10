@@ -1,7 +1,6 @@
 package com.digitalkoi.core.network.repositories
 
 import androidx.annotation.VisibleForTesting
-import com.digitalkoi.core.network.responses.BaseResponse
 import com.digitalkoi.core.network.responses.PokemonsResponse
 import com.digitalkoi.core.network.services.PokemonService
 
@@ -17,7 +16,7 @@ class PokemonRepository(
     /**
      * Get list of Pokemon.
      *
-     * @param page A page count for offset
+     * @param offset A page count for offset
      * @return Response for pokemon's resource.
      */
     suspend fun getPokemons(offset: Int, limit: Int): PokemonsResponse =
@@ -25,6 +24,9 @@ class PokemonRepository(
             limit = limit,
             offset = offset
         )
+
+    suspend fun getPokemon(id: Long): PokemonsResponse.PokemonResponse =
+        service.getPokemon(id)
 
     /**
      * Calculate offset position.

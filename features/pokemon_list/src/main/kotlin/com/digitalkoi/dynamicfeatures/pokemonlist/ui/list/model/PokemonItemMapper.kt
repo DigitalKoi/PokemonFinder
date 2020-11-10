@@ -8,7 +8,7 @@ import com.digitalkoi.core.network.responses.PokemonsResponse
  *
  * @see Mapper
  */
-class PokemonItemMapper : Mapper<PokemonsResponse, List<PokemonItem>> {
+class PokemonItemMapper : Mapper<List<PokemonsResponse.PokemonResponse>, List<PokemonItem>> {
 
     /**
      * Transform network response to [PokemonItem].
@@ -16,13 +16,28 @@ class PokemonItemMapper : Mapper<PokemonsResponse, List<PokemonItem>> {
      * @param from Network pokemons response.
      * @return List of parsed pokemons items.
      */
-    override suspend fun map(from: PokemonsResponse) =
-        from.results.map {
+    override suspend fun map(from: List<PokemonsResponse.PokemonResponse>) =
+        from.map { pokemonResponse ->
             PokemonItem(
-                id = 1,
-                name = it.name,
-                description = "",
-                imageUrl = it.url
+                id = pokemonResponse.id,
+                name = pokemonResponse.name,
+                height = pokemonResponse.height,
+                weight = pokemonResponse.weight,
+                stats = PokemonItem.Stat(
+                    hp = pokemonResponse.stats[5].stat,
+                    attack = pokemonResponse.stats[4].stat,
+                    defense = pokemonResponse.stats[3].stat
+                ),
+                types = pokemonResponse.types.map { typeResponse ->
+                    PokemonItem.Type(
+                        slot = typeResponse.slot,
+                        type = PokemonItem.Type.TypeDetails(
+                            name = typeResponse.type.name,
+                            url = typeResponse.type.url
+                        )
+                    )
+                },
+                imageUrl = pokemonResponse.getImageUrl()
             )
         }
 }
