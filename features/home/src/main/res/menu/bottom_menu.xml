@@ -6,8 +6,8 @@
         android:id="@+id/navigation_pokemon_list_graph"
         android:icon="@drawable/ic_list"
         android:title="@string/home_tab_pokemons" />
-    <item
-        android:id="@+id/navigation_pokemon_favorites_graph"
-        android:icon="@drawable/ic_favorites"
-        android:title="@string/home_tab_favorites" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_pokemon_favorites_graph"-->
+<!--        android:icon="@drawable/ic_favorites"-->
+<!--        android:title="@string/home_tab_favorites" />-->
 </menu>

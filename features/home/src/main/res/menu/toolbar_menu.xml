@@ -6,4 +6,25 @@
         android:title="@string/home_toolbar_theme"
         app:showAsAction="always"
         app:actionViewClass="com.digitalkoi.dynamicfeatures.home.ui.menu.ToggleThemeCheckBox" />
+
+    <item
+        android:id="@+id/menu_toggle_hp"
+        android:checkable="true"
+        android:title="@string/home_toolbar_hp"
+        app:actionViewClass="android.widget.CheckBox"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/menu_toggle_attack"
+        android:checkable="true"
+        android:title="@string/home_toolbar_attack"
+        app:actionViewClass="android.widget.CheckBox"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/menu_toggle_defense"
+        android:checkable="true"
+        android:title="@string/home_toolbar_defense"
+        app:actionViewClass="android.widget.CheckBox"
+        app:showAsAction="never|withText" />
 </menu>

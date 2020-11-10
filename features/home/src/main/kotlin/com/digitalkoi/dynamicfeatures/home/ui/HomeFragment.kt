@@ -33,6 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private val navGraphIds = listOf(
         R.navigation.navigation_characters_list_graph
+        // TODO: add here navigation's
     )
 
     /**

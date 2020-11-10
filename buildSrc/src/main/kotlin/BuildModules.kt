@@ -7,11 +7,12 @@ object BuildModules {
 
     object Features {
         const val HOME = ":features:home"
+        const val POKEMON_LIST = ":features:pokemon_list"
     }
 
     object Commons {
         const val UI = ":commons:ui"
-        const val VIEW = ":commons:views"
+        const val VIEWS = ":commons:views"
     }
 
     object Libraries {

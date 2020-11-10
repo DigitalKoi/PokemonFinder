@@ -1,8 +1,12 @@
 <resources>
     <!--Home tab items-->
-    <string name="home_tab_pokemons">Characters</string>
+    <string name="home_tab_pokemons">Pokemons</string>
     <string name="home_tab_favorites">Favorites</string>
 
     <!--Home toolbar items-->
     <string name="home_toolbar_theme">Toggle Theme</string>
+
+    <string name="home_toolbar_hp">health points</string>
+    <string name="home_toolbar_attack">attack</string>
+    <string name="home_toolbar_defense">defense</string>
 </resources>
